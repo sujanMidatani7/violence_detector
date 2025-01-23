@@ -8,7 +8,7 @@ import pandas as pd
 import threading
 import os
 
-# Custom LSTM class to ignore 'time_major' argument code
+# Custom LSTM class to ignore 'time_major' argument code to check if the model is loaded correctly
 class CustomLSTM(keras.layers.LSTM):
     def __init__(self, units, **kwargs):
         if 'time_major' in kwargs:
