@@ -8,7 +8,7 @@ import pandas as pd
 import threading
 import os
 
-# Custom LSTM class to ignore 'time_major' argument
+# Custom LSTM class to ignore 'time_major' argument code
 class CustomLSTM(keras.layers.LSTM):
     def __init__(self, units, **kwargs):
         if 'time_major' in kwargs:
@@ -27,7 +27,7 @@ for gpu in gpus:
     tf.config.experimental.set_memory_growth(gpu, True)
 
 # Make sure the model path is correct and the model file exists
-model_path = r'C:\Users\hp\OneDrive\Desktop\paper\venv\movenet_multipose_lightning_1'
+model_path = r'../models/movenet_multipose_lightning_1'
 if not os.path.exists(model_path):
     raise FileNotFoundError(f"Model file not found at {model_path}")
 
@@ -40,7 +40,7 @@ pose = mpPose.Pose()
 mpDraw = mp.solutions.drawing_utils 
 
 # Load the LSTM model with custom objects
-model_mediapipe = keras.models.load_model("lstm-model.h5", custom_objects=custom_objects)
+model_mediapipe = keras.models.load_model("../models/lstm-model.h5", custom_objects=custom_objects)
 
 lm_list = []
 label = "neutral"
@@ -195,7 +195,7 @@ while True:
             
     else:
         print("Invalid input. Enter 'w' for webcam or 'v' for video file.")
-output_video_path = 'C:/Users/hp/OneDrive/Desktop/r.mp4'
+output_video_path = 'output/r.mp4'
 
 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
